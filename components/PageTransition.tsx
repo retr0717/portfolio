@@ -18,6 +18,7 @@ const PageTransition = ({ children }: { children: any }) => {
           className="h-screen w-screen fixed bg-primary top-0 pointer-events-none"
         />
       </div>
+      {children}
     </AnimatePresence>
   );
 };
