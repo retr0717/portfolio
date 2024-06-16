@@ -221,12 +221,12 @@ const Resume = () => {
                         >
                           <span className="text-accent">{item.duration}</span>
                           <h3 className="text-xl max-w-[260px] min-h-[60px] text-center lg:text-left">
-                            {item.position}
+                            {item.degree}
                           </h3>
                           <div className="flex items-center gap-3">
                             {/*dat*/}
                             <span className="w-[6px] h-[6px] rounded-full bg-accent"></span>
-                            <p className="text-white/60">{item.company}</p>
+                            <p className="text-white/60">{item.institute}</p>
                           </div>
                         </li>
                       );
