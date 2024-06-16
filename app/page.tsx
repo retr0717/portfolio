@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { FiDownload } from "react-icons/fi";
 import Social from "@/components/Social";
 import Photo from "@/components/Photo";
+import Stats from "@/components/Stats";
 const Home = () => {
   return (
     <section className="h-full">
@@ -16,8 +17,7 @@ const Home = () => {
                 <span className="text-accent">Alwin Aji</span>
               </h1>
               <p className="max-w-[500px] mb-9 text-white/80">
-                I'm a Full Stack Developer based in India. Proficient in various
-                programming languages and frameworks. I have a passion for
+                I'm a Full Stack Developer based in India. I have a passion for
                 developing and designing scalable web applications.
               </p>
               {/*Buttons and Socials*/}
@@ -45,6 +45,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <Stats />
     </section>
   );
 };
