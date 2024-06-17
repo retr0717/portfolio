@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/tooltip";
 import Link from "next/link";
 import Image from "next/image";
+import WorkSliderButtons from "@/components/WorkSliderBtns";
 
 const projects = [
   {
@@ -165,7 +166,10 @@ const Work = () => {
                 );
               })}
               {/*slider buttons*/}
-              <WorkSliderButtons />
+              <WorkSliderButtons
+                containerStyles="flex gap-2 absolute right-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 w-full justify-between xl:w-max xl:justify-none"
+                btnStyles="bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all"
+              />
             </Swiper>
           </div>
         </div>
