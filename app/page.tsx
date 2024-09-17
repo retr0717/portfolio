@@ -1,9 +1,17 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { FiDownload } from "react-icons/fi";
 import Social from "@/components/Social";
 import Photo from "@/components/Photo";
 import Stats from "@/components/Stats";
 const Home = () => {
+  const goToResume = () => {
+    window.open(
+      "https://drive.google.com/file/d/1sThVbujAjOsNu_3LiPmjLw3t-k-dI_BP/view?usp=drive_link",
+    );
+  };
+
   return (
     <section className="h-full">
       <div className="container mx-auto h-full">
@@ -26,6 +34,7 @@ const Home = () => {
                   variant="outline"
                   size="lg"
                   className="uppercase flex items-center gap-2"
+                  onClick={goToResume}
                 >
                   <span>Download CV</span>
                   <FiDownload />
