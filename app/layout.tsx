@@ -25,6 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <link rel="icon" href="/next.svg" />
       <body className={jetbrainsMono.variable}>
         <Header />
         <StairTransition />
