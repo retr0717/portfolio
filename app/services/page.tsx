@@ -17,18 +17,6 @@ const services = [
     desc: "Deals with the security of websites, web applications, and web services.",
     href: "",
   },
-  {
-    num: "02",
-    title: "Web Security",
-    desc: "Deals with the security of websites, web applications, and web services.",
-    href: "",
-  },
-  {
-    num: "02",
-    title: "Web Security",
-    desc: "Deals with the security of websites, web applications, and web services.",
-    href: "",
-  },
 ];
 
 const Services = () => {

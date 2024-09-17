@@ -1,8 +1,23 @@
 "use client";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { FaHtml5, FaCss3, FaJs, FaReact, FaNodeJs } from "react-icons/fa";
-import { SiTailwindcss, SiNextdotjs } from "react-icons/si";
+import {
+  FaHtml5,
+  FaCss3,
+  FaJs,
+  FaReact,
+  FaNodeJs,
+  FaDocker,
+  FaLinux,
+} from "react-icons/fa";
+import {
+  SiTailwindcss,
+  SiNextdotjs,
+  SiTypescript,
+  SiCypress,
+  SiMongodb,
+  SiPostgresql,
+} from "react-icons/si";
 
 import {
   Tooltip,
@@ -13,6 +28,7 @@ import {
 
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { motion } from "framer-motion";
+import { DockIcon } from "lucide-react";
 
 {
   /*about data*/
@@ -111,6 +127,31 @@ const skills = {
       icons: <FaNodeJs />,
       name: "nodsjs",
     },
+    {
+      icons: <SiTypescript />,
+      name: "Typescript",
+    },
+    {
+      icons: <FaDocker />,
+      name: "Dockers",
+    },
+    {
+      icons: <SiCypress />,
+      name: "Cypress",
+    },
+    {
+      icons: <SiMongodb />,
+      name: "MongoDB",
+    },
+    {
+      icons: <SiPostgresql />,
+      name: "Postgresql",
+    },
+
+    {
+      icons: <FaLinux />,
+      name: "Linux",
+    },
   ],
 };
 
@@ -120,34 +161,9 @@ const experience = {
   desc: "Self Taught Web Developer ,focused on building next gen web apps",
   items: [
     {
-      company: "Nill",
-      position: "web developer",
-      duration: "2022 - Present",
-    },
-    {
-      company: "Nill",
-      position: "web developer",
-      duration: "2022 - Present",
-    },
-    {
-      company: "Nill",
-      position: "web developer",
-      duration: "2022 - Present",
-    },
-    {
-      company: "Nill",
-      position: "web developer",
-      duration: "2022 - Present",
-    },
-    {
-      company: "Nill",
-      position: "web developer",
-      duration: "2022 - Present",
-    },
-    {
-      company: "Nill",
-      position: "web developer",
-      duration: "2022 - Present",
+      company: "IEEE SB CE KGR",
+      position: "Webmaster",
+      duration: "2024 - Present",
     },
   ],
 };
