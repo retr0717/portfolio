@@ -1,9 +1,6 @@
-version: "3.8"
 services:
   web:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: retr0717/portfolio:prod
     ports:
       - "3000:3000"
     volumes:
