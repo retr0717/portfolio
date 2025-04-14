@@ -21,46 +21,43 @@ const services = [
 
 const Services = () => {
   return (
-    <section className="min-h-[80vh] flex flex-col justify-center py-12 xl:py-0">
+    <section className="py-20 lg:py-32">
       <div className="container mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="h2 mb-4">My Services</h2>
+          <p className="text-text-secondary max-w-2xl mx-auto">
+            Specialized services tailored to deliver exceptional digital experiences
+          </p>
+        </div>
+        
         <motion.div
-          initial={{ opacity: 0 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{
             opacity: 1,
-            transition: { delay: 2.4, duration: 0.4, ease: "easeIn" },
+            y: 0,
+            transition: { duration: 0.5, ease: "easeOut" },
           }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-[60px]"
+          className="grid grid-cols-1 md:grid-cols-2 gap-8"
         >
           {services.map((service: any, index: number) => {
             return (
               <div
                 key={index}
-                className="flex-1 flex flex-col justify-center gap-6 group"
+                className="bg-secondary rounded-xl p-8 transition-all hover:translate-y-[-5px] hover:shadow-xl"
               >
-                {/*top*/}
-                <div className="w-full flex justify-between items-center">
-                  <div
-                    className="text-5xl font-extrabold text-outline text-transparent group-hover:text-outline-hover transition-all 
-                    duration-500"
-                  >
-                    {service.num}
+                <div className="flex justify-between items-center mb-6">
+                  <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-accent/10">
+                    <span className="text-accent font-bold">{service.num}</span>
                   </div>
                   <Link
                     href={service.href}
-                    className="w-[70px] h-[70px] rounded-full bg-white group-hover:bg-accent transition-all
-                    duration-500 flex justify-center items-center hover:-rotate-45"
+                    className="w-10 h-10 rounded-full bg-white/5 flex justify-center items-center text-accent hover:bg-accent hover:text-white transition-all"
                   >
-                    <BsArrowDownRight className="text-primary text-3xl" />
+                    <BsArrowDownRight className="text-xl" />
                   </Link>
                 </div>
-                {/*title*/}
-                <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500">
-                  {service.title}
-                </h2>
-                {/*description*/}
-                <p className="text-white/60">{service.desc}</p>
-                {/*border*/}
-                <div className="border-b border-white/20 w-full"></div>
+                <h3 className="text-xl font-bold mb-4">{service.title}</h3>
+                <p className="text-text-secondary">{service.desc}</p>
               </div>
             );
           })}

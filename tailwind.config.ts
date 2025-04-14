@@ -25,10 +25,15 @@ const config = {
     },
     extend: {
       colors: {
-        primary: "#1c1c22",
+        primary: "#121212", // Dark charcoal background
+        secondary: "#1e1e1e", // Slightly lighter charcoal
         accent: {
-          DEFAULT: "#00ff99",
-          hover: "#00e187",
+          DEFAULT: "#ffd700", // Bright yellow as primary accent
+          hover: "#e6c200", // Slightly darker yellow for hover states
+        },
+        text: {
+          primary: "#f3f4f6", // Main text color (light)
+          secondary: "#9ca3af", // Secondary text color
         },
       },
       keyframes: {
