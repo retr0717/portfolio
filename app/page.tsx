@@ -31,7 +31,7 @@ const Home = () => {
 
   useEffect(() => {
     // Handle mouse movement for interactive elements
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e : MouseEvent) => {
       const { clientX, clientY } = e;
       setCursorPosition({ x: clientX, y: clientY });
       cursorX.set(clientX);
