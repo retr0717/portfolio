@@ -11,7 +11,8 @@ import {
   FaDocker,
   FaLinux,
   FaAws,
-  FaGithub
+  FaGithub,
+  FaPython
 } from "react-icons/fa";
 import {
   SiTailwindcss,
@@ -20,7 +21,9 @@ import {
   SiCypress,
   SiMongodb,
   SiPostgresql,
-  SiKubernetes
+  SiKubernetes,
+  SiSocketdotio,
+  SiExpo // Using Expo icon as an alternative for React Native
 } from "react-icons/si";
 
 import {
@@ -80,13 +83,16 @@ const skills = {
     { icons: <FaCss3 />, name: "CSS3" },
     { icons: <FaJs />, name: "Javascript" },
     { icons: <FaReact />, name: "ReactJs" },
+    { icons: <SiExpo />, name: "React Native" },
     { icons: <SiNextdotjs />, name: "NextJS" },
     { icons: <SiTailwindcss />, name: "TailwindCSS" },
     { icons: <FaNodeJs />, name: "NodeJS" },
     { icons: <SiTypescript />, name: "TypeScript" },
+    { icons: <FaPython />, name: "Python" },
     { icons: <FaDocker />, name: "Docker" },
     { icons: <SiKubernetes />, name: "Kubernetes" },
     { icons: <FaAws />, name: "AWS" },
+    { icons: <SiSocketdotio />, name: "WebSockets" },
     { icons: <SiCypress />, name: "Cypress" },
     { icons: <SiMongodb />, name: "MongoDB" },
     { icons: <SiPostgresql />, name: "PostgreSQL" },
