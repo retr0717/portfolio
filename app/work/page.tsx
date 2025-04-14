@@ -352,7 +352,7 @@ const Work = () => {
                             <motion.div whileHover={{ y: -2 }}>
                               <Link href={selectedProject.live} target="_blank" rel="noopener noreferrer">
                                 <Button size="sm" variant="default" className="w-8 h-8 rounded-full p-0">
-                                  <HiOutlineExternalLink className="text-sm" />
+                                  <HiOutlineExternalLink className="text-sm text-black" />
                                 </Button>
                               </Link>
                             </motion.div>
@@ -404,7 +404,7 @@ const Work = () => {
                         <div className="mt-5 flex gap-3">
                           {selectedProject.live && (
                             <Link href={selectedProject.live} target="_blank" rel="noopener noreferrer" className="flex-1">
-                              <Button size="sm" className="w-full gap-1 text-xs">
+                              <Button size="sm" className="w-full gap-1 text-xs text-black">
                                 Live Demo
                                 <BsArrowUpRight className="text-xs" />
                               </Button>
