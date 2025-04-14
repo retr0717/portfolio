@@ -9,11 +9,14 @@ import {
   BsPhone, 
   BsLightbulb, 
   BsCloud,
-  BsServer
+  BsServer,
+  BsCpu,
+  BsGearWideConnected
 } from "react-icons/bs";
+import { RiRobot2Line } from "react-icons/ri";
 import Link from "next/link";
 
-// Enhanced services array with added cloud hosting & AWS services
+// Enhanced services array with added AI integration service
 const services = [
   {
     num: "01",
@@ -62,6 +65,14 @@ const services = [
     icon: <BsServer className="text-2xl" />,
     href: "/contact",
     color: "from-orange-500 to-red-400",
+  },
+  {
+    num: "07",
+    title: "AI Website Integration",
+    desc: "Enhancing your web applications with cutting-edge AI capabilities including chatbots, content generation, recommendation systems, and personalized user experiences powered by the latest LLM technologies.",
+    icon: <RiRobot2Line className="text-2xl" />,
+    href: "/contact",
+    color: "from-violet-500 to-fuchsia-400",
   },
 ];
 
@@ -146,7 +157,7 @@ const Services = () => {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10"
         >
           {services.map((service, index) => (
             <motion.div
@@ -229,7 +240,7 @@ const Services = () => {
           >
             <Link 
               href="/contact" 
-              className=" text-black inline-block px-8 py-4 bg-accent text-white rounded-lg font-medium hover:bg-accent/90 transition-all"
+              className="text-black inline-block px-8 py-4 bg-accent text-white rounded-lg font-medium hover:bg-accent/90 transition-all"
             >
               Get in touch
             </Link>
