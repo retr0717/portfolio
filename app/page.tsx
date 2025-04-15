@@ -122,9 +122,9 @@ const Home = () => {
           </div>
 
           <div className="container mx-auto px-4 md:px-6 z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-20 items-center">
-              {/* Photo - MOVED TO BOTTOM on mobile */}
-              <div className="lg:col-span-2 lg:order-last order-2">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-20 items-center">
+              {/* Photo - Adjusted column width and position */}
+              <div className="lg:col-span-5 lg:col-start-8 lg:order-last order-1 relative z-10">
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -160,8 +160,8 @@ const Home = () => {
                 </motion.div>
               </div>
               
-              {/* Content - MOVED TO TOP on mobile */}
-              <div className="lg:col-span-3 space-y-8 order-1">
+              {/* Content - With improved text container */}
+              <div className="lg:col-span-7 lg:col-start-1 space-y-8 order-2 lg:order-1 relative z-20 mt-8 lg:mt-0">
                 <motion.div 
                   initial={{ width: 0, opacity: 0 }}
                   animate={{ width: "auto", opacity: 1 }}
@@ -187,27 +187,33 @@ const Home = () => {
                   </motion.div>
                 </motion.div>
                 
-                <div ref={textRef} className="overflow-hidden">
+                {/* Title with improved word wrapping */}
+                <div className="w-full overflow-hidden">
                   <motion.h1 
-                    className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-text-primary inline-block"
+                    className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-text-primary"
                     initial={{ y: 100 }}
                     animate={{ y: 0 }}
                     transition={{ duration: 0.8, ease: [0.33, 1, 0.68, 1] }}
                   >
-                    {titleChars.map((char, index) => (
-                      <motion.span
-                        key={index}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ 
-                          duration: 0.5, 
-                          delay: 0.8 + index * 0.02,
-                          ease: "easeOut" 
-                        }}
-                        className={char === "M" ? "text-accent" : ""}
-                      >
-                        {char === " " ? "\u00A0" : char}
-                      </motion.span>
+                    {/* Split by words first, then animate characters within each word */}
+                    {titleText.split(" ").map((word, wordIndex) => (
+                      <span key={wordIndex} className="inline-block mr-[0.2em] mb-1">
+                        {word.split("").map((char, charIndex) => (
+                          <motion.span
+                            key={`${wordIndex}-${charIndex}`}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ 
+                              duration: 0.5, 
+                              delay: 0.8 + (wordIndex * word.length + charIndex) * 0.02,
+                              ease: "easeOut" 
+                            }}
+                            className={`inline-block ${char === "M" ? "text-accent" : ""}`}
+                          >
+                            {char}
+                          </motion.span>
+                        ))}
+                      </span>
                     ))}
                   </motion.h1>
                 </div>
