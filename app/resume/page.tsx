@@ -209,7 +209,7 @@ const Resume = () => {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        className="min-h-[80vh] flex flex-col py-16 lg:py-24"
+        className="min-h-[80vh] flex flex-col py-10 px-4 sm:py-16 lg:py-24"
       >
         <div className="container mx-auto relative">
           {/* Decorative Background Elements */}
@@ -236,10 +236,10 @@ const Resume = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-center mb-16"
+            className="text-center mb-8 sm:mb-16"
           >
-            <h1 className="text-5xl lg:text-6xl font-bold mb-4">Resume</h1>
-            <p className="text-text-secondary text-lg max-w-2xl mx-auto">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4">Resume</h1>
+            <p className="text-text-secondary text-base sm:text-lg max-w-2xl mx-auto px-4">
               My professional journey, skills, and qualifications
             </p>
           </motion.div>
@@ -248,32 +248,35 @@ const Resume = () => {
             defaultValue="experience"
             value={activeTab}
             onValueChange={setActiveTab}
-            className="flex flex-col lg:flex-row gap-12"
+            className="flex flex-col lg:flex-row gap-6 sm:gap-8 lg:gap-12"
           >
-            {/* Tab Navigation - Redesigned with Icons */}
-            <div className="w-full lg:w-[250px] lg:sticky lg:top-24 lg:self-start">
-              <TabsList className="flex flex-row lg:flex-col w-full bg-secondary/50 backdrop-blur-sm rounded-xl p-2 gap-2">
+            {/* Tab Navigation - Icons only on mobile */}
+            <div className="w-full mx-auto max-w-md lg:max-w-none lg:w-[250px] lg:sticky lg:top-24 lg:self-start">
+              <TabsList className="flex flex-row lg:flex-col w-full bg-secondary/50 backdrop-blur-sm rounded-xl p-2 gap-2 justify-center sm:justify-start">
                 {Object.entries(tabIcons).map(([key, icon]) => (
                   <TabsTrigger 
                     key={key}
                     value={key}
-                    className={`flex items-center gap-3 w-full justify-start px-4 py-3 data-[state=active]:bg-accent data-[state=active]:text-black transition-all duration-200 ${activeTab === key ? 'font-medium' : 'text-white/70'}`}
+                    className={`flex items-center gap-2 sm:gap-3 w-full justify-center sm:justify-start px-2 sm:px-4 py-3 data-[state=active]:bg-accent data-[state=active]:text-black transition-all duration-200 ${activeTab === key ? 'font-medium' : 'text-white/70'}`}
                     onClick={() => setActiveTab(key)}
                   >
                     <motion.span
                       animate={{ rotate: activeTab === key ? 0 : 0 }}
                       transition={{ duration: 0.3 }}
+                      className="text-lg sm:text-base" // Slightly larger icon on mobile
                     >
                       {icon}
                     </motion.span>
-                    <span className="hidden sm:inline-block">{key.charAt(0).toUpperCase() + key.slice(1)}</span>
+                    <span className="hidden sm:inline-block text-sm">
+                      {key.charAt(0).toUpperCase() + key.slice(1)}
+                    </span>
                   </TabsTrigger>
                 ))}
               </TabsList>
             </div>
 
             {/* Tab Content */}
-            <div className="min-h-[600px] w-full" ref={tabContentRef}>
+            <div className="min-h-[500px] sm:min-h-[600px] w-full" ref={tabContentRef}>
               <AnimatePresence mode="wait">
                 {/* Experience Tab */}
                 <TabsContent 
@@ -286,21 +289,21 @@ const Resume = () => {
                     initial="hidden"
                     animate="visible"
                     exit="exit"
-                    className="flex flex-col gap-10"
+                    className="flex flex-col gap-6 sm:gap-10"
                   >
-                    <motion.div variants={titleVariants} className="flex flex-col gap-4">
-                      <h2 className="text-3xl lg:text-4xl font-bold text-white">
+                    <motion.div variants={titleVariants} className="flex flex-col gap-3 sm:gap-4 text-center lg:text-left">
+                      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white">
                         {experience.title}
                       </h2>
-                      <p className="text-lg text-text-secondary max-w-2xl">
+                      <p className="text-base sm:text-lg text-text-secondary max-w-2xl mx-auto lg:mx-0">
                         {experience.desc}
                       </p>
                     </motion.div>
 
-                    <ScrollArea className="h-[500px] pr-6 py-4">
+                    <ScrollArea className="h-[400px] sm:h-[500px] pr-3 sm:pr-6 py-2 sm:py-4">
                       <motion.ul 
                         variants={containerVariants}
-                        className="grid grid-cols-1 lg:grid-cols-2 gap-6"
+                        className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6"
                       >
                         {experience.items.map((item, index) => (
                           <motion.li
@@ -311,7 +314,7 @@ const Resume = () => {
                           >
                             <motion.div 
                               variants={cardVariants}
-                              className="relative bg-secondary rounded-xl p-8 border border-accent/10 h-full overflow-hidden group"
+                              className="relative bg-secondary rounded-xl p-5 sm:p-8 border border-accent/10 h-full overflow-hidden group"
                             >
                               {/* Accent bar */}
                               <div className="absolute left-0 top-0 w-1 h-full bg-accent" />
@@ -353,21 +356,21 @@ const Resume = () => {
                     initial="hidden"
                     animate="visible"
                     exit="exit"
-                    className="flex flex-col gap-10"
+                    className="flex flex-col gap-6 sm:gap-10"
                   >
-                    <motion.div variants={titleVariants} className="flex flex-col gap-4">
-                      <h2 className="text-3xl lg:text-4xl font-bold text-white">
+                    <motion.div variants={titleVariants} className="flex flex-col gap-3 sm:gap-4 text-center lg:text-left">
+                      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white">
                         {education.title}
                       </h2>
-                      <p className="text-lg text-text-secondary max-w-2xl">
+                      <p className="text-base sm:text-lg text-text-secondary max-w-2xl mx-auto lg:mx-0">
                         {education.desc}
                       </p>
                     </motion.div>
 
-                    <ScrollArea className="h-[500px] pr-6 py-4">
+                    <ScrollArea className="h-[400px] sm:h-[500px] pr-3 sm:pr-6 py-2 sm:py-4">
                       <motion.ul 
                         variants={containerVariants}
-                        className="grid grid-cols-1 lg:grid-cols-2 gap-6"
+                        className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6"
                       >
                         {education.items.map((item, index) => (
                           <motion.li
@@ -378,7 +381,7 @@ const Resume = () => {
                           >
                             <motion.div 
                               variants={cardVariants}
-                              className="relative bg-secondary rounded-xl p-8 border border-accent/10 h-full overflow-hidden group"
+                              className="relative bg-secondary rounded-xl p-5 sm:p-8 border border-accent/10 h-full overflow-hidden group"
                             >
                               {/* Accent bar */}
                               <div className="absolute left-0 top-0 w-1 h-full bg-accent" />
@@ -420,48 +423,50 @@ const Resume = () => {
                     initial="hidden"
                     animate="visible"
                     exit="exit"
-                    className="flex flex-col gap-10"
+                    className="flex flex-col gap-6 sm:gap-10"
                   >
-                    <motion.div variants={titleVariants} className="flex flex-col gap-4">
-                      <h2 className="text-3xl lg:text-4xl font-bold text-white">
+                    <motion.div variants={titleVariants} className="flex flex-col gap-3 sm:gap-4 text-center lg:text-left">
+                      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white">
                         {skills.title}
                       </h2>
-                      <p className="text-lg text-text-secondary max-w-2xl">
+                      <p className="text-base sm:text-lg text-text-secondary max-w-2xl mx-auto lg:mx-0">
                         {skills.desc}
                       </p>
                     </motion.div>
 
-                    <motion.ul 
-                      variants={containerVariants}
-                      className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6"
-                    >
-                      {skills.skillList.map((skill, index) => (
-                        <motion.li 
-                          key={index}
-                          variants={skillVariants}
-                          whileHover="hover"
-                          custom={index}
-                        >
-                          <TooltipProvider delayDuration={100}>
-                            <Tooltip>
-                              <TooltipTrigger className="w-full h-[130px] bg-secondary rounded-xl border border-white/5 overflow-hidden flex flex-col justify-center items-center gap-4 group transition-all relative">
-                                {/* Decoration */}
-                                <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                                <div className="text-5xl text-white/80 group-hover:text-accent transition-all duration-300 z-10">
-                                  {skill.icons}
-                                </div>
-                                <p className="text-sm text-text-secondary group-hover:text-white transition-colors duration-300 z-10">
-                                  {skill.name}
-                                </p>
-                              </TooltipTrigger>
-                              <TooltipContent>
-                                <p>Expert in {skill.name}</p>
-                              </TooltipContent>
-                            </Tooltip>
-                          </TooltipProvider>
-                        </motion.li>
-                      ))}
-                    </motion.ul>
+                    <ScrollArea className="pr-3 sm:pr-6 py-2 sm:py-4">
+                      <motion.ul 
+                        variants={containerVariants}
+                        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-6"
+                      >
+                        {skills.skillList.map((skill, index) => (
+                          <motion.li 
+                            key={index}
+                            variants={skillVariants}
+                            whileHover="hover"
+                            custom={index}
+                          >
+                            <TooltipProvider delayDuration={100}>
+                              <Tooltip>
+                                <TooltipTrigger className="w-full h-[100px] sm:h-[130px] bg-secondary rounded-xl border border-white/5 overflow-hidden flex flex-col justify-center items-center gap-3 sm:gap-4 group transition-all relative">
+                                  {/* Decoration */}
+                                  <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                  <div className="text-4xl sm:text-5xl text-white/80 group-hover:text-accent transition-all duration-300 z-10">
+                                    {skill.icons}
+                                  </div>
+                                  <p className="text-xs sm:text-sm text-text-secondary group-hover:text-white transition-colors duration-300 z-10">
+                                    {skill.name}
+                                  </p>
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                  <p>Expert in {skill.name}</p>
+                                </TooltipContent>
+                              </Tooltip>
+                            </TooltipProvider>
+                          </motion.li>
+                        ))}
+                      </motion.ul>
+                    </ScrollArea>
                   </motion.div>
                 </TabsContent>
 
@@ -476,35 +481,35 @@ const Resume = () => {
                     initial="hidden"
                     animate="visible"
                     exit="exit"
-                    className="flex flex-col gap-10"
+                    className="flex flex-col gap-6 sm:gap-10"
                   >
-                    <motion.div variants={titleVariants} className="flex flex-col gap-4">
-                      <h2 className="text-3xl lg:text-4xl font-bold text-white">
+                    <motion.div variants={titleVariants} className="flex flex-col gap-3 sm:gap-4 text-center lg:text-left">
+                      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white">
                         {about.title}
                       </h2>
-                      <p className="text-lg text-text-secondary max-w-2xl">
+                      <p className="text-base sm:text-lg text-text-secondary max-w-2xl mx-auto lg:mx-0">
                         {about.desc}
                       </p>
                     </motion.div>
 
                     <motion.div 
                       variants={itemVariants}
-                      className="bg-secondary rounded-xl border border-accent/10 p-8 lg:p-10"
+                      className="bg-secondary rounded-xl border border-accent/10 p-5 sm:p-8 lg:p-10 mx-auto w-full"
                     >
                       <motion.ul 
                         variants={containerVariants}
-                        className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-6"
+                        className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 sm:gap-x-10 gap-y-4 sm:gap-y-6"
                       >
                         {about.info.map((info, index) => (
                           <motion.li
                             key={index}
                             variants={itemVariants}
-                            className="flex items-center gap-4 group"
+                            className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 group"
                           >
-                            <span className="min-w-[100px] text-text-secondary group-hover:text-accent transition-colors">
+                            <span className="text-text-secondary group-hover:text-accent transition-colors font-medium">
                               {info.fieldName}:
                             </span>
-                            <span className="text-white font-medium">
+                            <span className="text-white">
                               {info.fieldValue}
                             </span>
                           </motion.li>
