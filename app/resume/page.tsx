@@ -276,7 +276,11 @@ const Resume = () => {
             <div className="min-h-[600px] w-full" ref={tabContentRef}>
               <AnimatePresence mode="wait">
                 {/* Experience Tab */}
-                <TabsContent value="experience" className="w-full mt-0">
+                <TabsContent 
+                  key="experience-tab"
+                  value="experience" 
+                  className="w-full mt-0"
+                >
                   <motion.div
                     variants={containerVariants}
                     initial="hidden"
@@ -339,7 +343,11 @@ const Resume = () => {
                 </TabsContent>
 
                 {/* Education Tab */}
-                <TabsContent value="education" className="w-full mt-0">
+                <TabsContent 
+                  key="education-tab"
+                  value="education" 
+                  className="w-full mt-0"
+                >
                   <motion.div
                     variants={containerVariants}
                     initial="hidden"
@@ -402,7 +410,11 @@ const Resume = () => {
                 </TabsContent>
 
                 {/* Skills Tab */}
-                <TabsContent value="skills" className="w-full h-full mt-0">
+                <TabsContent 
+                  key="skills-tab"
+                  value="skills" 
+                  className="w-full h-full mt-0"
+                >
                   <motion.div
                     variants={containerVariants}
                     initial="hidden"
@@ -454,7 +466,11 @@ const Resume = () => {
                 </TabsContent>
 
                 {/* About Me Tab */}
-                <TabsContent value="aboutme" className="w-full mt-0">
+                <TabsContent 
+                  key="aboutme-tab"
+                  value="aboutme" 
+                  className="w-full mt-0"
+                >
                   <motion.div
                     variants={containerVariants}
                     initial="hidden"
