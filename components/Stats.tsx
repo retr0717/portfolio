@@ -7,25 +7,25 @@ import { FiClock, FiCheckSquare, FiCode, FiGithub } from "react-icons/fi";
 
 const stats = [
   { 
-    number: 2, 
+    number: 3, 
     text: "Years of Experience", 
     icon: <FiClock className="text-accent" />,
     color: "from-accent/20 to-accent-hover/5"
   },
   { 
-    number: 30, 
+    number: 28, 
     text: "Projects Completed", 
     icon: <FiCheckSquare className="text-accent" />,
     color: "from-accent/20 to-accent-hover/5"
   },
   { 
-    number: 8, 
+    number: 12, 
     text: "Technologies Mastered", 
     icon: <FiCode className="text-accent" />,
     color: "from-accent/20 to-accent-hover/5"
   },
   { 
-    number: 500, 
+    number: 1218, 
     text: "Code Commits", 
     icon: <FiGithub className="text-accent" />,
     color: "from-accent/20 to-accent-hover/5" 
