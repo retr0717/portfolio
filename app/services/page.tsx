@@ -78,8 +78,9 @@ const services = [
 
 const Services = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [touchedIndex, setTouchedIndex] = useState<number | null>(null);
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: false, amount: 0.2 });
+  const isInView = useInView(sectionRef, { once: false, amount: 0.1 }); // Reduced threshold for mobile
 
   // Animation variants
   const containerVariants = {
@@ -111,12 +112,23 @@ const Services = () => {
     },
   };
 
+  // Handle touch events for mobile
+  const handleTouchStart = (index: number) => {
+    setTouchedIndex(index);
+  };
+
+  const handleTouchEnd = () => {
+    setTimeout(() => {
+      setTouchedIndex(null);
+    }, 500);
+  };
+
   return (
-    <section ref={sectionRef} className="py-16 lg:py-40 relative overflow-hidden">
-      {/* Enhanced background elements */}
+    <section ref={sectionRef} className="py-12 sm:py-16 lg:py-40 relative overflow-hidden">
+      {/* Background elements - adjusted for mobile */}
       <div className="absolute top-0 left-0 w-full h-full">
         <motion.div 
-          className="absolute top-20 left-10 w-72 h-72 bg-accent/5 rounded-full blur-3xl" 
+          className="absolute top-20 left-5 sm:left-10 w-48 sm:w-72 h-48 sm:h-72 bg-accent/5 rounded-full blur-3xl" 
           animate={{ 
             scale: isInView ? [0.8, 1.2, 1] : 0.8,
             opacity: isInView ? 1 : 0.3,
@@ -124,7 +136,7 @@ const Services = () => {
           transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
         />
         <motion.div 
-          className="absolute bottom-20 right-10 w-80 h-80 bg-accent/5 rounded-full blur-3xl" 
+          className="absolute bottom-20 right-5 sm:right-10 w-56 sm:w-80 h-56 sm:h-80 bg-accent/5 rounded-full blur-3xl" 
           animate={{ 
             scale: isInView ? [1, 1.3, 0.9, 1] : 1,
             opacity: isInView ? 1 : 0.3,
@@ -133,21 +145,21 @@ const Services = () => {
         />
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <motion.div 
-          className="text-center mb-20"
+          className="text-center mb-12 sm:mb-16 lg:mb-20"
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={headerVariants}
         >
           <motion.span 
-            className="inline-block px-4 py-1.5 bg-accent/10 text-accent rounded-full text-sm font-medium mb-4"
+            className="inline-block px-3 sm:px-4 py-1 sm:py-1.5 bg-accent/10 text-accent rounded-full text-xs sm:text-sm font-medium mb-3 sm:mb-4"
             whileHover={{ scale: 1.05, backgroundColor: "rgba(var(--accent-rgb), 0.15)" }}
           >
             Services
           </motion.span>
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6">My Expertise</h2>
-          <p className="text-text-secondary max-w-2xl mx-auto text-lg">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">My Expertise</h2>
+          <p className="text-text-secondary max-w-2xl mx-auto text-base sm:text-lg">
             Specialized services tailored to deliver exceptional digital experiences
             that drive business growth and user engagement.
           </p>
@@ -157,7 +169,7 @@ const Services = () => {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10"
         >
           {services.map((service, index) => (
             <motion.div
@@ -165,33 +177,36 @@ const Services = () => {
               variants={serviceVariants}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
+              onTouchStart={() => handleTouchStart(index)}
+              onTouchEnd={handleTouchEnd}
               className="relative overflow-hidden group"
               whileHover={{ y: -5 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <div className="bg-secondary rounded-2xl p-8 lg:p-10 h-full border border-white/5 backdrop-blur-sm">
+              <div className="bg-secondary rounded-xl sm:rounded-2xl p-5 sm:p-8 lg:p-10 h-full border border-white/5 backdrop-blur-sm">
                 {/* Background gradient */}
                 <motion.div 
                   className={`absolute -inset-1 opacity-0 bg-gradient-to-r ${service.color} blur-lg rounded-2xl -z-10`}
                   animate={{ 
-                    opacity: hoveredIndex === index ? 0.15 : 0,
-                    scale: hoveredIndex === index ? 1.05 : 1
+                    opacity: (hoveredIndex === index || touchedIndex === index) ? 0.15 : 0,
+                    scale: (hoveredIndex === index || touchedIndex === index) ? 1.05 : 1
                   }}
                   transition={{ duration: 0.3 }}
                 />
                 
-                <div className="flex justify-between items-start mb-8">
-                  <div className="flex items-center gap-4">
+                <div className="flex justify-between items-start mb-6 sm:mb-8">
+                  <div className="flex items-center gap-2 sm:gap-4">
                     <motion.div 
-                      className="flex items-center justify-center w-14 h-14 rounded-lg bg-accent/10"
+                      className="flex items-center justify-center w-10 h-10 sm:w-14 sm:h-14 rounded-lg bg-accent/10"
                       whileHover={{ rotate: 5 }}
                     >
-                      <span className="text-accent font-bold">{service.num}</span>
+                      <span className="text-accent font-bold text-sm sm:text-base">{service.num}</span>
                     </motion.div>
                     <motion.div 
-                      className="flex items-center justify-center w-14 h-14 rounded-lg bg-white/5"
+                      className="flex items-center justify-center w-10 h-10 sm:w-14 sm:h-14 rounded-lg bg-white/5"
                       whileHover={{ rotate: -5 }}
                       animate={{ 
-                        scale: hoveredIndex === index ? [1, 1.1, 1] : 1
+                        scale: (hoveredIndex === index || touchedIndex === index) ? [1, 1.1, 1] : 1
                       }}
                       transition={{ duration: 0.5 }}
                     >
@@ -204,43 +219,45 @@ const Services = () => {
                   >
                     <Link
                       href={service.href}
-                      className="w-12 h-12 rounded-full bg-white/5 flex justify-center items-center text-accent hover:bg-accent hover:text-white transition-all"
+                      className="w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-white/5 flex justify-center items-center text-accent hover:bg-accent hover:text-white transition-all"
                     >
-                      <BsArrowUpRight className="text-xl" />
+                      <BsArrowUpRight className="text-base sm:text-xl" />
                     </Link>
                   </motion.div>
                 </div>
                 
                 <motion.h3 
-                  className="text-2xl font-bold mb-4"
+                  className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4"
                   animate={{ 
-                    x: hoveredIndex === index ? 5 : 0
+                    x: (hoveredIndex === index || touchedIndex === index) ? 5 : 0
                   }}
                   transition={{ duration: 0.3 }}
                 >
                   {service.title}
                 </motion.h3>
                 
-                <p className="text-text-secondary leading-relaxed">{service.desc}</p>
+                <p className="text-sm sm:text-base text-text-secondary leading-relaxed">
+                  {service.desc}
+                </p>
               </div>
             </motion.div>
           ))}
         </motion.div>
 
         <motion.div 
-          className="mt-20 text-center"
+          className="mt-12 sm:mt-16 lg:mt-20 text-center"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ delay: 0.8, duration: 0.6 }}
         >
-          <h3 className="text-2xl font-bold mb-6">Need a custom solution?</h3>
+          <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Need a custom solution?</h3>
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
           >
             <Link 
               href="/contact" 
-              className="text-black inline-block px-8 py-4 bg-accent text-white rounded-lg font-medium hover:bg-accent/90 transition-all"
+              className="inline-block px-6 sm:px-8 py-3 sm:py-4 bg-accent text-white rounded-lg font-medium hover:bg-accent/90 transition-all"
             >
               Get in touch
             </Link>
