@@ -1,12 +1,16 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 const MovingBackground = () => {
   const backgroundRef = useRef<HTMLDivElement>(null);
+  const [isClient, setIsClient] = useState(false);
   
   useEffect(() => {
+    // Mark as client-side after mount
+    setIsClient(true);
+    
     // Set initial values for the CSS variables
     if (backgroundRef.current) {
       backgroundRef.current.style.setProperty("--mouse-x", "50%");
@@ -36,16 +40,12 @@ const MovingBackground = () => {
     };
   }, []);
   
-  return (
-    <div 
-      ref={backgroundRef} 
-      className="fixed inset-0 w-full h-full z-[-1] overflow-hidden pointer-events-none"
-      style={{ 
-        "--mouse-x": "50%", 
-        "--mouse-y": "50%" 
-      } as React.CSSProperties}
-    >
-      <div className="absolute inset-0 overflow-hidden opacity-[0.15] pointer-events-none">
+  // Generate random floating elements only on client side
+  const renderFloatingElements = () => {
+    if (!isClient) return null;
+    
+    return (
+      <>
         {/* Floating elements - shapes that slowly animate */}
         {[...Array(18)].map((_, index) => (
           <motion.div
@@ -111,6 +111,21 @@ const MovingBackground = () => {
             {symbol}
           </motion.div>
         ))}
+      </>
+    );
+  };
+  
+  return (
+    <div 
+      ref={backgroundRef} 
+      className="fixed inset-0 w-full h-full z-[-1] overflow-hidden pointer-events-none"
+      style={{ 
+        "--mouse-x": "50%", 
+        "--mouse-y": "50%" 
+      } as React.CSSProperties}
+    >
+      <div className="absolute inset-0 overflow-hidden opacity-[0.15] pointer-events-none">
+        {renderFloatingElements()}
         
         {/* Background gradient that follows mouse */}
         <div 
