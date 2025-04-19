@@ -17,35 +17,151 @@ import { Badge } from "@/components/ui/badge";
 // Enhanced project data with additional fields
 const projects = [
   {
-    id: "crypto-wallet",
-    num: "01",
+    id: "MERN-GPT",
+    num: "00",
     category: "full stack",
-    title: "Crypto Wallet",
-    desc: "A comprehensive cryptocurrency wallet application that enables users to securely store, send, and receive various cryptocurrencies with real-time market data integration.",
+    title: "MERN-GPT",
+    desc: "A full-stack application that integrates OpenAI's GPT-3.5 API for generating text-based responses, built with the MERN stack.",
     features: [
-      "Real-time cryptocurrency price updates",
-      "Secure transaction history",
-      "Multi-wallet support",
-      "Encrypted storage"
+      "User authentication",
+      "Chat interface",
+      "Real-time messaging",
+      "OpenAI API integration"
     ],
     stack: [
       { name: "React", color: "bg-blue-500" },
       { name: "Node.js", color: "bg-green-600" },
       { name: "MongoDB", color: "bg-green-500" },
+      { name: "Express", color: "bg-gray-500" },
       { name: "Tailwind CSS", color: "bg-cyan-500" },
-      { name: "JavaScript", color: "bg-yellow-500" },
+      { name: "TypeScript", color: "bg-blue-600" },
     ],
-    image: "/assets/resume/wallet.png",
-    live: "https://crypto-wallet-smoky.vercel.app/",
-    github: "https://github.com/retr0717/crypto-wallet",
+    image: "/assets/work/merngpt.png",
+    live: "",
+    github: "https://github.com/retr0717/merngpt",
+    featured: false,
+    year: "2024"
+  },
+  {
+    id: "svc-pred-model",
+    num: "01",
+    category: "ML",
+    title: "VEHICLE SERVICE PREDICTION MODEL",
+    desc: "A machine learning model that predicts outcomes based on real-time data collected from the vehicle sensors(CAN DATA), built with Python and PyTorch.",
+    features: [
+      "Data preprocessing",
+      "Model training and evaluation",
+      "Interactive web interface",
+      "Real-time predictions"
+    ],
+    stack: [
+      { name: "Python", color: "bg-yellow-500" },
+      { name: "Pandas", color: "bg-green-500" },
+      { name: "Scikit-learn", color: "bg-blue-600" },
+      { name: "PyTorch", color: "bg-red-500" },
+      { name: "NumPy", color: "bg-blue-500" },
+      { name: "Matplotlib", color: "bg-blue-600" },
+      { name: "FASTAPI", color: "bg-blue-500" },
+    ],
+    image: "/assets/work/svc.png",
+    live: "",
+    github: "https://github.com/retr0717/service_prediction_model",
+    featured: false,
+    year: "2025"
+  },
+  {
+    id: "CTF Platform",
+    num: "02",
+    category: "full stack",
+    title: "CTF PLATFORM",
+    desc: "A Capture The Flag (CTF) platform designed for cybersecurity enthusiasts, featuring challenges, hints, and a leaderboard to track progress.",
+    features: [
+      "User authentication",
+      "Challenge management",
+      "Hint system",
+      "Leaderboard",
+      "Real-time scoring"
+    ],
+    stack: [
+      { name: "Next.js", color: "bg-blue-600" },
+      { name: "Express", color: "bg-gray-500" },
+      { name: "Socket.io", color: "bg-purple-500" },
+      { name: "Tailwind CSS", color: "bg-cyan-500" },
+      { name: "TypeScript", color: "bg-blue-600" },
+      { name: "PostgreSQL", color: "bg-blue-700" },
+      { name: "React", color: "bg-blue-500" },
+      { name: "Node.js", color: "bg-green-600" },
+      { name: "Tailwind CSS", color: "bg-cyan-500" },
+      { name: "Prisma", color: "bg-blue-500" },
+      { name: "Turborepo", color: "bg-green-500" },
+    ],
+    image: "/assets/work/ctf2.png",
+    github: "https://github.com/retr0717/ctf-platform",
     featured: true,
     year: "2024"
   },
   {
-    id: "vercel-clone",
-    num: "02",
+    id: 'social-media',
+    num: "03",
     category: "full stack",
-    title: "Vercel Clone",
+    title: "SOCIAL MEDIA",
+    desc: "A social media platform that allows users to create profiles, post updates, and interact with others through comments and likes.",
+    features: [
+      "User authentication",
+      "Profile management",
+      "Post creation and commenting",
+      "Real-time notifications"
+    ],
+    stack: [
+      { name: "React Native", color: "bg-blue-500" },
+      { name: "Node.js", color: "bg-green-600" },
+      { name: "Postgres", color: "bg-green-500" },
+      { name: "Express", color: "bg-gray-500" },
+      { name: "Tailwind CSS", color: "bg-cyan-500" },
+      { name: "TypeScript", color: "bg-blue-600" },
+      { name: "Supabase", color: "bg-green-500" },
+    ],
+    image: "/assets/work/social.png",
+    live: "",
+    github: "https://github.com/retr0717/socialmedia",
+    featured: false,
+    year: "2024"
+  },
+  {
+    id: "Webly",
+    num: "04",
+    category: "full stack",
+    title: "WEBLY",
+    desc: "A web-based platform that allows users to create websites using claude api and chatgpt api, providing a user-friendly interface for website development.",
+    features: [ 
+      "User authentication",
+      "Create with Prompt",
+      "Real time Preview",
+      "Edit"
+    ],
+    stack: [
+      { name: "Nextjs", color: "bg-blue-500" },
+      { name: "Node.js", color: "bg-green-600" },
+      { name: "Postgres", color: "bg-green-500" },
+      { name: "Prisma", color: "bg-blue-500" },
+      { name: "Express", color: "bg-gray-500" },
+      { name: "Tailwind CSS", color: "bg-cyan-500" },
+      { name: "TypeScript", color: "bg-blue-600" },
+      { name: "OpenAI API", color: "bg-blue-500" },
+      { name: "Claude API", color: "bg-purple-500" },
+      { name: "Turborepo", color: "bg-green-500" },
+    ],
+    image: "/assets/work/webly.png",
+    live: "",
+    github: "https://github.com/retr0717/miniproj",
+    featured: false,
+    year: "2025"
+  },
+  {
+    id: "vercel-clone",
+    num: "05",
+    category: "full stack",
+    title: "VERCEL CLONE",
     desc: "A streamlined deployment platform that allows developers to locally host websites directly from GitHub repositories, providing a similar experience to Vercel's deployment workflow.",
     features: [
       "GitHub integration",
@@ -69,9 +185,9 @@ const projects = [
   },
   {
     id: "omegle",
-    num: "03",
+    num: "06",
     category: "full stack",
-    title: "Omegle Clone",
+    title: "OMEGLE CLONE",
     desc: "A real-time video chat platform that connects users randomly, implementing WebRTC for peer-to-peer video streaming and socket connections for signaling.",
     features: [
       "Real-time video chat",
@@ -94,9 +210,9 @@ const projects = [
   },
   {
     id: "learning-platform",
-    num: "04",
+    num: "07",
     category: "full stack",
-    title: "Learning Platform",
+    title: "LEARNING PLATFORM",
     desc: "An interactive educational platform that offers courses, assessments, and progress tracking with a focus on personalized learning paths and content delivery.",
     features: [
       "Course management system",
@@ -318,26 +434,30 @@ const Work = () => {
                     className="bg-secondary rounded-2xl overflow-hidden border border-white/5 h-full"
                   >
                     <div className="grid grid-cols-1 lg:grid-cols-2 h-full">
-                      {/* Project Image - Now in a sidebar layout on desktop */}
-                      <div className="relative lg:h-full aspect-video w-full overflow-hidden">
-                        <Image 
-                          src={selectedProject.image}
-                          fill
-                          className="object-cover"
-                          alt={selectedProject.title}
-                          sizes="(max-width: 768px) 100vw, 30vw"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-secondary/80 to-transparent"></div>
+                      {/* Project Image - Improved quality and dimensions */}
+                      <div className="relative bg-black/20 lg:h-full w-full overflow-hidden flex items-center justify-center">
+                        <div className="relative w-full h-full aspect-[16/9] lg:aspect-auto">
+                          <Image 
+                            src={selectedProject.image}
+                            fill
+                            className="object-contain lg:object-cover"
+                            alt={selectedProject.title}
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                            quality={90}
+                            priority={true}
+                          />
+                        </div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-secondary/80 to-transparent pointer-events-none"></div>
                         
                         {/* Project category badge */}
-                        <div className="absolute top-4 left-4">
+                        <div className="absolute top-4 left-4 z-10">
                           <Badge className="bg-accent/80 backdrop-blur-sm text-black hover:bg-accent">
                             {selectedProject.category.toUpperCase()}
                           </Badge>
                         </div>
                         
                         {/* Project Links */}
-                        <div className="absolute top-4 right-4 flex space-x-2">
+                        <div className="absolute top-4 right-4 z-10 flex space-x-2">
                           {selectedProject.github && (
                             <motion.div whileHover={{ y: -2 }}>
                               <Link href={selectedProject.github} target="_blank" rel="noopener noreferrer">

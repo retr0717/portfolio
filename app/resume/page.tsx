@@ -35,7 +35,7 @@ import {
 
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { motion, AnimatePresence, MotionConfig } from "framer-motion";
-import { BriefcaseIcon, GraduationCapIcon, CodeIcon, UserIcon } from "lucide-react";
+import { BriefcaseIcon, GraduationCapIcon, CodeIcon, UserIcon, GitBranch } from "lucide-react";
 
 // Resume data
 const about = {
@@ -98,6 +98,7 @@ const skills = {
     { icons: <SiPostgresql />, name: "PostgreSQL" },
     { icons: <FaLinux />, name: "Linux" },
     { icons: <FaGithub />, name: "GitHub" },
+    { icons: <GitBranch/>, name: "GitOps"}
   ],
 };
 
@@ -108,8 +109,13 @@ const experience = {
     {
       company: "IEEE SB CE KGR",
       position: "Webmaster",
-      duration: "2024 - Present",
+      duration: "2024 - 2025,APRIL",
     },
+    {
+      compnay: "SATLAA JEWEL PVT LTD",
+      position: "FULL STACK FRONTEND DEVELOPER",
+      duration: "3 MONTHS'2025",
+    }
   ],
 };
 

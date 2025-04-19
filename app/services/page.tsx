@@ -257,7 +257,7 @@ const Services = () => {
           >
             <Link 
               href="/contact" 
-              className="inline-block px-6 sm:px-8 py-3 sm:py-4 bg-accent text-white rounded-lg font-medium hover:bg-accent/90 transition-all"
+              className="inline-block text-black px-6 sm:px-8 py-3 sm:py-4 bg-accent rounded-lg font-medium hover:bg-accent/90 transition-all"
             >
               Get in touch
             </Link>
