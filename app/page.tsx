@@ -53,7 +53,7 @@ const Home = () => {
 
   const goToResume = () => {
     window.open(
-      "https://drive.google.com/file/d/1sThVbujAjOsNu_3LiPmjLw3t-k-dI_BP/view?usp=drive_link",
+      "https://drive.google.com/file/d/1dO187I1eWJPNxnDjzrEGN6FN5tjhw7Ao/view?usp=sharing",
     );
   };
   
