@@ -382,20 +382,21 @@ const Work = () => {
               animate="visible"
               className="grid grid-cols-1 xl:grid-cols-12 gap-10"
             >
-              {/* Project List */}
+              {/* Project List - Reduced height */}
               <motion.div 
                 variants={itemVariants}
                 className="xl:col-span-4 order-2 xl:order-1"
               >
-                <div className="bg-secondary/30 backdrop-blur-sm rounded-2xl p-6 border border-white/5">
-                  <h3 className="text-xl font-semibold mb-6">Project Collection</h3>
+                <div className="bg-secondary/30 backdrop-blur-sm rounded-2xl p-4 border border-white/5">
+                  <h3 className="text-lg font-semibold mb-3">Project Collection</h3>
                   
-                  <div className="space-y-4">
+                  {/* Project list with max height and scrolling */}
+                  <div className="space-y-2 max-h-[330px] overflow-y-auto scrollbar-thin scrollbar-thumb-accent/20 scrollbar-track-transparent pr-2">
                     {filteredProjects.map((project) => (
                       <motion.div
                         key={project.id}
                         onClick={() => setSelectedProject(project)}
-                        className={`cursor-pointer p-4 rounded-xl transition-all ${
+                        className={`cursor-pointer p-3 rounded-xl transition-all ${
                           selectedProject.id === project.id 
                             ? 'bg-accent/10 border border-accent/20' 
                             : 'hover:bg-white/5'
@@ -404,12 +405,12 @@ const Work = () => {
                       >
                         <div className="flex justify-between items-start">
                           <div>
-                            <h4 className={`font-semibold ${
+                            <h4 className={`font-semibold text-sm ${
                               selectedProject.id === project.id ? 'text-accent' : 'text-white'
                             }`}>{project.title}</h4>
-                            <p className="text-sm text-text-secondary mt-1 line-clamp-2">{project.desc}</p>
+                            <p className="text-xs text-text-secondary mt-0.5 line-clamp-1">{project.desc}</p>
                           </div>
-                          <span className="text-xs px-2 py-1 bg-white/10 rounded-full">
+                          <span className="text-[10px] px-1.5 py-0.5 bg-white/10 rounded-full">
                             {project.year}
                           </span>
                         </div>
@@ -419,7 +420,7 @@ const Work = () => {
                 </div>
               </motion.div>
               
-              {/* Project Details */}
+              {/* Project Details - Reduced height */}
               <motion.div 
                 variants={itemVariants} 
                 className="xl:col-span-8 order-1 xl:order-2"
@@ -431,16 +432,16 @@ const Work = () => {
                     initial="initial"
                     animate="animate"
                     exit="exit"
-                    className="bg-secondary rounded-2xl overflow-hidden border border-white/5 h-full"
+                    className="bg-secondary rounded-2xl overflow-hidden border border-white/5"
                   >
-                    <div className="grid grid-cols-1 lg:grid-cols-2 h-full">
-                      {/* Project Image - Improved quality and dimensions */}
-                      <div className="relative bg-black/20 lg:h-full w-full overflow-hidden flex items-center justify-center">
-                        <div className="relative w-full h-full aspect-[16/9] lg:aspect-auto">
+                    <div className="grid grid-cols-1 lg:grid-cols-2">
+                      {/* Project Image - Reduced height with fixed aspect ratio */}
+                      <div className="relative bg-black/20 w-full overflow-hidden flex items-center justify-center">
+                        <div className="relative w-full h-[300px] lg:h-[400px]">
                           <Image 
                             src={selectedProject.image}
                             fill
-                            className="object-contain lg:object-cover"
+                            className="object-contain" 
                             alt={selectedProject.title}
                             sizes="(max-width: 768px) 100vw, 50vw"
                             quality={90}
@@ -450,19 +451,19 @@ const Work = () => {
                         <div className="absolute inset-0 bg-gradient-to-t from-secondary/80 to-transparent pointer-events-none"></div>
                         
                         {/* Project category badge */}
-                        <div className="absolute top-4 left-4 z-10">
-                          <Badge className="bg-accent/80 backdrop-blur-sm text-black hover:bg-accent">
+                        <div className="absolute top-3 left-3 z-10">
+                          <Badge className="bg-accent/80 backdrop-blur-sm text-black hover:bg-accent text-xs">
                             {selectedProject.category.toUpperCase()}
                           </Badge>
                         </div>
                         
                         {/* Project Links */}
-                        <div className="absolute top-4 right-4 z-10 flex space-x-2">
+                        <div className="absolute top-3 right-3 z-10 flex space-x-2">
                           {selectedProject.github && (
                             <motion.div whileHover={{ y: -2 }}>
                               <Link href={selectedProject.github} target="_blank" rel="noopener noreferrer">
-                                <Button size="sm" variant="secondary" className="w-8 h-8 rounded-full p-0">
-                                  <BsGithub className="text-sm" />
+                                <Button size="sm" variant="secondary" className="w-7 h-7 rounded-full p-0">
+                                  <BsGithub className="text-xs" />
                                 </Button>
                               </Link>
                             </motion.div>
@@ -471,8 +472,8 @@ const Work = () => {
                           {selectedProject.live && (
                             <motion.div whileHover={{ y: -2 }}>
                               <Link href={selectedProject.live} target="_blank" rel="noopener noreferrer">
-                                <Button size="sm" variant="default" className="w-8 h-8 rounded-full p-0">
-                                  <HiOutlineExternalLink className="text-sm text-black" />
+                                <Button size="sm" variant="default" className="w-7 h-7 rounded-full p-0">
+                                  <HiOutlineExternalLink className="text-xs text-black" />
                                 </Button>
                               </Link>
                             </motion.div>
@@ -481,50 +482,55 @@ const Work = () => {
                       </div>
                       
                       {/* Project Content - More compact layout */}
-                      <div className="p-6 flex flex-col h-full">
-                        <div className="flex justify-between items-start mb-3">
-                          <h2 className="text-2xl font-bold">{selectedProject.title}</h2>
-                          <span className="text-xs px-2 py-1 bg-white/10 rounded-full">
+                      <div className="p-4 flex flex-col">
+                        <div className="flex justify-between items-start mb-2">
+                          <h2 className="text-xl font-bold">{selectedProject.title}</h2>
+                          <span className="text-xs px-1.5 py-0.5 bg-white/10 rounded-full">
                             {selectedProject.year}
                           </span>
                         </div>
-                        <p className="text-text-secondary text-sm mb-5 line-clamp-3">{selectedProject.desc}</p>
+                        <p className="text-text-secondary text-xs mb-3 line-clamp-2">{selectedProject.desc}</p>
                         
-                        <div className="grid grid-cols-2 gap-5 flex-grow">
-                          {/* Project Features - Now in compact columns */}
+                        <div className="grid grid-cols-2 gap-3 flex-grow">
+                          {/* Project Features - More compact */}
                           <div>
-                            <h3 className="text-sm font-semibold mb-3">Key Features</h3>
-                            <ul className="space-y-2">
+                            <h3 className="text-xs font-semibold mb-2">Key Features</h3>
+                            <ul className="space-y-1">
                               {selectedProject.features.map((feature, idx) => (
-                                <li key={idx} className="flex items-center gap-2 text-text-secondary text-xs">
-                                  <span className="w-1.5 h-1.5 bg-accent rounded-full flex-shrink-0"></span>
-                                  <span className="line-clamp-2">{feature}</span>
+                                <li key={idx} className="flex items-center gap-1.5 text-text-secondary text-[10px]">
+                                  <span className="w-1 h-1 bg-accent rounded-full flex-shrink-0"></span>
+                                  <span className="line-clamp-1">{feature}</span>
                                 </li>
                               ))}
                             </ul>
                           </div>
                           
-                          {/* Tech Stack - Now in a separate column */}
+                          {/* Tech Stack - More compact */}
                           <div>
-                            <h3 className="text-sm font-semibold mb-3">Technologies</h3>
-                            <div className="flex flex-wrap gap-2">
-                              {selectedProject.stack.map((tech, idx) => (
+                            <h3 className="text-xs font-semibold mb-2">Technologies</h3>
+                            <div className="flex flex-wrap gap-1">
+                              {selectedProject.stack.slice(0, 6).map((tech, idx) => (
                                 <span 
                                   key={idx} 
-                                  className={`px-2 py-0.5 rounded-full text-xs font-medium text-white ${tech.color} bg-opacity-80`}
+                                  className={`px-1.5 py-0.5 rounded-full text-[10px] font-medium text-white ${tech.color} bg-opacity-80`}
                                 >
                                   {tech.name}
                                 </span>
                               ))}
+                              {selectedProject.stack.length > 6 && (
+                                <span className="text-[10px] text-text-secondary">
+                                  +{selectedProject.stack.length - 6} more
+                                </span>
+                              )}
                             </div>
                           </div>
                         </div>
                         
                         {/* Action Buttons - More compact */}
-                        <div className="mt-5 flex gap-3">
+                        <div className="mt-4 flex gap-2">
                           {selectedProject.live && (
                             <Link href={selectedProject.live} target="_blank" rel="noopener noreferrer" className="flex-1">
-                              <Button size="sm" className="w-full gap-1 text-xs text-black">
+                              <Button size="sm" className="w-full gap-1 text-xs text-black py-1">
                                 Live Demo
                                 <BsArrowUpRight className="text-xs" />
                               </Button>
@@ -532,7 +538,7 @@ const Work = () => {
                           )}
                           
                           <Link href={selectedProject.github} target="_blank" rel="noopener noreferrer" className="flex-1">
-                            <Button size="sm" variant="outline" className="w-full gap-1 text-xs">
+                            <Button size="sm" variant="outline" className="w-full gap-1 text-xs py-1">
                               Source Code
                               <BsGithub className="text-xs" />
                             </Button>
